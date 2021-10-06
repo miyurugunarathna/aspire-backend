@@ -33,7 +33,7 @@ public class BadgeService {
         Badge existingBadge = repository.findById(badge.getBadgeID()).orElse(null);
         existingBadge.setBadgeName(badge.getBadgeName());
         existingBadge.setDescription(badge.getDescription());
-        existingBadge.setCondition(badge.getCondition());
+        existingBadge.setConditions(badge.getConditions());
         return repository.save(existingBadge);
     }
 }

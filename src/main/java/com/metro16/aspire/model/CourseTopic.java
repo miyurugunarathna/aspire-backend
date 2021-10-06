@@ -6,9 +6,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Objects;
 
 @Getter
@@ -22,6 +20,12 @@ public class CourseTopic {
     private CourseTopicID courseTopicID;
     private String description;
     private String url;
+
+    @ManyToOne
+    @JoinColumn(name = "classID", referencedColumnName = "classID", insertable = false, updatable = false)
+    @JoinColumn(name = "subjectName", referencedColumnName = "subjectName", insertable = false, updatable = false)
+    @JoinColumn(name = "teacherID", referencedColumnName = "teacherID", insertable = false, updatable = false)
+    private Course course;
 
     @Override
     public boolean equals(Object o) {
