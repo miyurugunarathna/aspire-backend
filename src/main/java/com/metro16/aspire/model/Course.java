@@ -21,10 +21,7 @@ public class Course {
     private CourseID courseID;
     private String description;
 
-    @OneToMany
-    @JoinColumn(name = "classID", referencedColumnName = "classID")
-    @JoinColumn(name = "subjectName", referencedColumnName = "subjectName")
-    @JoinColumn(name = "teacherID", referencedColumnName = "teacherID")
+    @OneToMany(mappedBy = "course")
     @ToString.Exclude
     private Set<CourseTopic> topics;
 

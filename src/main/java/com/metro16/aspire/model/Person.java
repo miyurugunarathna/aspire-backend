@@ -5,6 +5,7 @@ import org.hibernate.Hibernate;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 @Getter
@@ -29,6 +30,15 @@ public class Person {
     private String password;
     private String status;
     private Date registeredDate;
+
+    @ManyToMany
+    @JoinTable(
+            name = "notification_assign",
+            joinColumns = @JoinColumn(name = "personID"),
+            inverseJoinColumns = @JoinColumn(name = "notificationID")
+    )
+    @ToString.Exclude
+    private List<Notifications> notifications;
 
     @Override
     public boolean equals(Object o) {
