@@ -19,7 +19,7 @@ public class JwtUtil {
     @Autowired
     private UserDetailsService service;
 
-    private String secret = "metro16";
+    private final String secret = "metro16";
 
     public String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);
