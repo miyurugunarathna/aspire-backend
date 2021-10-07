@@ -38,4 +38,7 @@ public class Student extends Person{
     )
     @ToString.Exclude
     private List<Badge> badges;
+
+    @OneToMany(mappedBy = "student")
+    Set<StudentExamAnswer> answers;
 }
