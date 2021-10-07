@@ -8,6 +8,7 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 @Getter
@@ -25,6 +26,11 @@ public class Questions {
     private Date date;
     @Embedded
     private SubjectID subjectID;
+
+    @OneToMany
+    @JoinColumn(name = "questionID")
+    @ToString.Exclude
+    private List<Reply> replies;
 
     @Override
     public boolean equals(Object o) {
