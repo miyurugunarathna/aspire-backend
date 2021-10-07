@@ -3,11 +3,12 @@ package com.metro16.aspire.controller;
 import com.metro16.aspire.model.Fees;
 import com.metro16.aspire.service.FeesService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin(origins = "*")
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/api")
 public class FeesController {
@@ -19,9 +20,9 @@ public class FeesController {
         return service.saveFee(fee);
     }
 
-    @GetMapping("/fee/all")
-    public List<Fees> findAllFees() {
-        return service.getFees();
+    @RequestMapping(value = "/fee/all", method = RequestMethod.GET)
+    public List<Fees> findAllFees(Authentication authentication) {
+        return service.getFees(authentication.getName());
     }
 
     @GetMapping("/fee/{id}")
