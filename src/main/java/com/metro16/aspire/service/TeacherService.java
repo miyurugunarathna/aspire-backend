@@ -29,8 +29,8 @@ public class TeacherService {
         return "Teacher deleted by id: " + id;
     }
 
-    public Teacher updateTeacher(Teacher teacher) {
-        Teacher existingTeacher = repository.findById(teacher.getPersonID()).orElse(null);
+    public Teacher updateTeacher(int id, Teacher teacher) {
+        Teacher existingTeacher = repository.findById(id).orElse(null);
         existingTeacher.setFName(teacher.getFName());
         existingTeacher.setLName(teacher.getLName());
         existingTeacher.setDob(teacher.getDob());
@@ -39,12 +39,19 @@ public class TeacherService {
         existingTeacher.setPhone(teacher.getPhone());
         existingTeacher.setImgURL(teacher.getImgURL());
         existingTeacher.setPassword(teacher.getPassword());
-        existingTeacher.setNic(teacher.getNic());
+        existingTeacher.setPackageid(teacher.getPackageid());
+
+        existingTeacher.setQualifititle(teacher.getQualifititle());
+        existingTeacher.setDescription(teacher.getDescription());
+        existingTeacher.setUniversity(teacher.getUniversity());
+        existingTeacher.setYearFrom(teacher.getYearFrom());
+        existingTeacher.setYearTo(teacher.getYearTo());
+
         existingTeacher.setBank(teacher.getBank());
         existingTeacher.setBranch(teacher.getBranch());
-        existingTeacher.setAccountNmb(teacher.getAccountNmb());
-        existingTeacher.setStatus(teacher.getStatus());
-        existingTeacher.setPackageID(teacher.getPackageID());
+        existingTeacher.setAccnum(teacher.getAccnum());
+        existingTeacher.setActive(teacher.getActive());
+
         return repository.save(existingTeacher);
     }
 }

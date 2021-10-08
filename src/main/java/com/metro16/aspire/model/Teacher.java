@@ -14,21 +14,25 @@ import java.util.Set;
 @RequiredArgsConstructor
 @Entity
 @Table(name = "teacher")
-@PrimaryKeyJoinColumn(name = "teacherID")
+@PrimaryKeyJoinColumn(name = "teacherid")
 public class Teacher extends Person{
-    private String nic;
+    private String qualifititle;
+    private String description;
+    private String university;
+    private int yearFrom;
+    private int yearTo;
     private String bank;
     private String branch;
-    private int accountNmb;
-    private int packageID;
+    private int accnum;
+    private int packageid;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    /*@OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "teacherID", referencedColumnName = "teacherID")
     @ToString.Exclude
-    private List<Qualification> qualification;
+    private List<Qualification> qualification;*/
 
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "teacherID", referencedColumnName = "teacherID")
+    @JoinColumn(name = "teacherID", referencedColumnName = "teacherid")
     @ToString.Exclude
     private Set<Fees> fees;
 
@@ -37,7 +41,7 @@ public class Teacher extends Person{
         if (this == o) return true;
         if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
         Teacher teacher = (Teacher) o;
-        return Objects.equals(getPersonID(), teacher.getPersonID());
+        return Objects.equals(getPersonid(), teacher.getPersonid());
     }
 
     @Override

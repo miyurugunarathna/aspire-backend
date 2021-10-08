@@ -48,7 +48,7 @@ public class JwtUtil {
 
     private String createToken(Map<String, Object> claims, String subject) {
         Person person = service.loadUserByEmail(subject);
-        claims.put("id", person.getPersonID());
+        claims.put("id", person.getPersonid());
         claims.put("role",person.getType());
 
         return Jwts.builder().setClaims(claims).setSubject(subject).setIssuedAt(new Date(System.currentTimeMillis()))

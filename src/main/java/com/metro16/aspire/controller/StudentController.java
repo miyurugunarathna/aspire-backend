@@ -24,14 +24,14 @@ public class StudentController {
         return service.getStudents();
     }
 
-    @GetMapping("/student/{id}")
+    @GetMapping("/student/get/{id}")
     public Student findStudentByID(@PathVariable int id) {
         return service.getStudentByID(id);
     }
 
-    @PutMapping("/student/update")
-    public Student updateStudent(@RequestBody Student student) {
-        return service.updateStudent(student);
+    @PutMapping("/student/update/{id}")
+    public Student updateStudent(@PathVariable int id, @RequestBody Student student) {
+        return service.updateStudent(id, student);
     }
 
     @DeleteMapping("/student/delete/{id}")

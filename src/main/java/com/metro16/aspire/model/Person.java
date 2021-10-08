@@ -18,18 +18,19 @@ import java.util.Objects;
 public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int personID;
+    private int personid;
     private String type;
     private String fName;
     private String lName;
-    private Date dob;
+    private String dob;
     private String gender;
     @Column(unique = true)
     private String email;
     private int phone;
     private String imgURL;
     private String password;
-    private String status;
+    private String active;
+    private String approved;
     private Date registeredDate;
 
     @OneToMany
@@ -40,7 +41,7 @@ public class Person {
     @ManyToMany
     @JoinTable(
             name = "notification_assign",
-            joinColumns = @JoinColumn(name = "personID"),
+            joinColumns = @JoinColumn(name = "personid"),
             inverseJoinColumns = @JoinColumn(name = "notificationID")
     )
     @ToString.Exclude
@@ -51,7 +52,7 @@ public class Person {
         if (this == o) return true;
         if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
         Person person = (Person) o;
-        return Objects.equals(personID, person.personID);
+        return Objects.equals(personid, person.personid);
     }
 
     @Override
