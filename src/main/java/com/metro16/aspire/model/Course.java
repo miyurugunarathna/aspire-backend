@@ -7,6 +7,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -20,26 +21,17 @@ public class Course {
     @EmbeddedId
     private CourseID courseID;
     private String description;
-
-    @OneToMany(mappedBy = "course")
-    @ToString.Exclude
-    private Set<CourseTopic> topics;
-
-    @ManyToOne
-    @ToString.Exclude
-    @JoinColumn(name = "c_feeID", referencedColumnName = "feeID")
-    private Fees fee;
+    private int feeID;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Course course = (Course) o;
-        return Objects.equals(courseID, course.courseID) && Objects.equals(description, course.description) && Objects.equals(fee, course.fee);
+        if (!(o instanceof Course course)) return false;
+        return Objects.equals(getCourseID(), course.getCourseID()) && Objects.equals(getDescription(), course.getDescription());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(courseID, description, fee);
+        return Objects.hash(getCourseID(), getDescription());
     }
 }

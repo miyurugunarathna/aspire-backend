@@ -16,8 +16,8 @@ public class FeesController {
     private FeesService service;
 
     @PostMapping("/fee/add")
-    public Fees addFee(@RequestBody Fees fee) {
-        return service.saveFee(fee);
+    public String addFee(@RequestBody Fees fee, Authentication authentication) {
+        return service.saveFee(fee, authentication.getName());
     }
 
     @RequestMapping(value = "/fee/all", method = RequestMethod.GET)
@@ -31,7 +31,7 @@ public class FeesController {
     }
 
     @PutMapping("/fee/update")
-    public Fees updateFee(@RequestBody Fees fee) {
+    public String updateFee(@RequestBody Fees fee) {
         return service.updateFee(fee);
     }
 

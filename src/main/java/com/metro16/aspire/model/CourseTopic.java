@@ -21,10 +21,11 @@ public class CourseTopic {
     private String description;
     private String url;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "classID", referencedColumnName = "classID", insertable = false, updatable = false)
     @JoinColumn(name = "subjectName", referencedColumnName = "subjectName", insertable = false, updatable = false)
     @JoinColumn(name = "teacherID", referencedColumnName = "teacherID", insertable = false, updatable = false)
+    @ToString.Exclude
     private Course course;
 
     @Override

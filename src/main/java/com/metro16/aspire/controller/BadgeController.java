@@ -16,7 +16,7 @@ public class BadgeController {
     private BadgeService service;
 
     @PostMapping("/badge/add")
-    public Badge addBadge(@RequestBody Badge badge) {
+    public String addBadge(@RequestBody Badge badge) {
         return service.saveBadge(badge);
     }
 
@@ -31,7 +31,7 @@ public class BadgeController {
     }
 
     @PutMapping("/badge/update")
-    public Badge updateBadge(@RequestBody Badge badge) {
+    public String updateBadge(@RequestBody Badge badge) {
         return service.updateBadge(badge);
     }
 

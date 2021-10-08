@@ -40,5 +40,12 @@ public class Student extends Person{
     private List<Badge> badges;
 
     @OneToMany(mappedBy = "student")
+    @ToString.Exclude
     Set<StudentExamAnswer> answers;
+
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "studentID")
+    @ToString.Exclude
+    private Set<Payment> payments;
 }

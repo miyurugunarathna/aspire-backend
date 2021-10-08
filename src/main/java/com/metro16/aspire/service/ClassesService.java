@@ -32,7 +32,6 @@ public class ClassesService {
     public Classes updateClass(Classes classes) {
         Classes existingClass = repository.findById(classes.getClassID()).orElse(null);
         existingClass.setClassName(classes.getClassName());
-        existingClass.setSubjects(classes.getSubjects());
         return repository.save(existingClass);
     }
 }
