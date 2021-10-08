@@ -51,6 +51,7 @@ public class TeacherService {
         existingTeacher.setBranch(teacher.getBranch());
         existingTeacher.setAccnum(teacher.getAccnum());
         existingTeacher.setActive(teacher.getActive());
+        existingTeacher.setApproved(teacher.getApproved());
 
         return repository.save(existingTeacher);
     }
