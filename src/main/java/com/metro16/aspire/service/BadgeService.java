@@ -12,8 +12,9 @@ public class BadgeService {
     @Autowired
     private BadgeRepository repository;
 
-    public Badge saveBadge(Badge badge) {
-        return repository.save(badge);
+    public String saveBadge(Badge badge) {
+        repository.save(badge);
+        return "Badge added successfully.";
     }
 
     public List<Badge> getBadges() {
@@ -26,14 +27,15 @@ public class BadgeService {
 
     public String deleteBadge(int id) {
         repository.deleteById(id);
-        return "Badge deleted by id: " + id;
+        return "Badge deleted successfully.";
     }
 
-    public Badge updateBadge(Badge badge) {
+    public String updateBadge(Badge badge) {
         Badge existingBadge = repository.findById(badge.getBadgeID()).orElse(null);
         existingBadge.setBadgeName(badge.getBadgeName());
         existingBadge.setDescription(badge.getDescription());
         existingBadge.setConditions(badge.getConditions());
-        return repository.save(existingBadge);
+        repository.save(existingBadge);
+        return "Badge updated successfully.";
     }
 }

@@ -42,7 +42,6 @@ public class CourseController {
     public Course addCourseFee(@PathVariable int cid, @PathVariable String name, @PathVariable int tid, @PathVariable int fid) {
         Course existCourse = service.getCourseByID(cid, name, tid);
         Fees existFee = feesService.getFeeByID(fid);
-        existCourse.setFee(existFee);
         return service.updateCourse(existCourse);
     }
 

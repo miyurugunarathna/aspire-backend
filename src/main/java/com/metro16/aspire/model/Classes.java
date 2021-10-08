@@ -21,11 +21,6 @@ public class Classes {
     private String className;
     private Date createdDate;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "classID", referencedColumnName = "classID")
-    @ToString.Exclude
-    private Set<Subjects> subjects;
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

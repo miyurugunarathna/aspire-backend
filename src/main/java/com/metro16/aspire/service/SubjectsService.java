@@ -17,8 +17,8 @@ public class SubjectsService {
         return repository.save(subjects);
     }
 
-    public List<Subjects> getSubjects() {
-        return repository.findAll();
+    public List<Subjects> getSubjectsByClassID(int cid) {
+        return repository.findAllBySubjectIDClassID(cid);
     }
 
     public Subjects getSubjectByID(int id, String name) {

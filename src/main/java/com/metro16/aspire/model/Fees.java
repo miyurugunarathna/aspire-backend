@@ -18,7 +18,7 @@ public class Fees {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int feeID;
     private String feesName;
-    private String feesType;
+    private int feesType;
     private double amount;
     private int frequency;
     private int teacherID;

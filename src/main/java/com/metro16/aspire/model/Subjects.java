@@ -22,12 +22,6 @@ public class Subjects {
     private SubjectID subjectID;
     private String description;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "classID", referencedColumnName = "classID")
-    @JoinColumn(name = "subjectName", referencedColumnName = "subjectName")
-    @ToString.Exclude
-    private Set<Course> courses;
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

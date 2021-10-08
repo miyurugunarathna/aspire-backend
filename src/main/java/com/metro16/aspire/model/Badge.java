@@ -17,8 +17,9 @@ public class Badge {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int badgeID;
-    @Embedded
-    private CourseID courseID;
+    private int classID;
+    private String subjectName;
+    private int teacherID;
     private String badgeName;
     private String description;
     private String conditions;

@@ -25,9 +25,9 @@ public class SubjectsController {
         return newSub;
     }
 
-    @GetMapping("/subject/all")
-    public List<Subjects> findAllSubjects() {
-        return service.getSubjects();
+    @GetMapping("/subject/all/{cid}")
+    public List<Subjects> findAllSubjectsByID(@PathVariable int cid) {
+        return service.getSubjectsByClassID(cid);
     }
 
     @GetMapping("/subject/{id}/{name}")

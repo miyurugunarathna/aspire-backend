@@ -15,8 +15,11 @@ public class FeesService {
     @Autowired
     private PersonRepository personRepository;
 
-    public Fees saveFee(Fees fees) {
-        return repository.save(fees);
+    public String saveFee(Fees fees, String email) {
+        int person = personRepository.findByEmail(email).getPersonID();
+        fees.setTeacherID(person);
+        repository.save(fees);
+        return "Fee added successfully.";
     }
 
     public List<Fees> getFees(String email) {
@@ -31,16 +34,17 @@ public class FeesService {
 
     public String deleteFee(int id) {
         repository.deleteById(id);
-        return "Fee deleted by id: " + id;
+        return "Fee deleted successfully.";
     }
 
-    public Fees updateFee(Fees fees) {
+    public String updateFee(Fees fees) {
         Fees existingFee = repository.findById(fees.getFeeID()).orElse(null);
         assert existingFee != null;
         existingFee.setFeesName(fees.getFeesName());
         existingFee.setFeesType(fees.getFeesType());
         existingFee.setAmount(fees.getAmount());
         existingFee.setFrequency(fees.getFrequency());
-        return repository.save(existingFee);
+        repository.save(existingFee);
+        return "Fee updated successfully.";
     }
 }
