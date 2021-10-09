@@ -29,14 +29,16 @@ public class StudentService {
         return "Student deleted by id: " + id;
     }
 
-    public Student updateStudent(Student student) {
-        Student existingStudent = repository.findById(student.getPersonID()).orElse(null);
+    public Student updateStudent(int id, Student student) {
+        Student existingStudent = repository.findById(id).orElse(null);
         existingStudent.setFName(student.getFName());
         existingStudent.setLName(student.getLName());
         existingStudent.setDob(student.getDob());
         existingStudent.setGender(student.getGender());
         existingStudent.setEmail(student.getEmail());
         existingStudent.setPhone(student.getPhone());
+        existingStudent.setActive(student.getActive());
+        existingStudent.setApproved(student.getApproved());
         existingStudent.setImgURL(student.getImgURL());
         existingStudent.setPassword(student.getPassword());
         return repository.save(existingStudent);

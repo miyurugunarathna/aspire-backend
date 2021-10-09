@@ -24,7 +24,7 @@ public class FeesService {
 
     public List<Fees> getFees(String email) {
         System.out.println(email);
-        int person = personRepository.findByEmail(email).getPersonID();
+        int person = personRepository.findByEmail(email).getPersonid();
         return repository.findAllByTeacherID(person);
     }
 

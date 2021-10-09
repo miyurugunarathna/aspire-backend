@@ -21,11 +21,11 @@ public class AuthController {
 
     @GetMapping("/")
     public String welcome() {
-        return "Welcome to aspire";
+        return "Welcome to Aspire";
     }
 
     @SuppressWarnings("rawtypes")
-    @PostMapping("/auth/login")
+    @PostMapping("auth/login")
     public ResponseEntity generateToken(@RequestBody AuthRequest authRequest) throws Exception {
         System.out.println("trouble " + authRequest);
         try {
